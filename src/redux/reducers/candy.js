@@ -1,12 +1,10 @@
-import {
-  CREATE_CANDY_COMMIT,
-  READ_CANDY_COMMIT,
-  DELETE_CANDY_COMMIT,
-  UPDATE_CANDY_COMMIT
-} from "../actions/candy";
+import { CREATE_CANDY_COMMIT, READ_CANDY_COMMIT, DELETE_CANDY_COMMIT, UPDATE_CANDY_COMMIT } from "../actions/candy";
+
+// avaliable viewTypes: 1 (Table), 2 (Card)
 
 const initialState = {
-  entries: []
+  entries: [],
+  viewType: 1
 };
 
 const candy = (state = initialState, action) => {
@@ -14,10 +12,7 @@ const candy = (state = initialState, action) => {
     case CREATE_CANDY_COMMIT:
       return {
         ...state,
-        entries: [
-          ...state.entries,
-          { ...action.candy, objectId: action.payload.objectId }
-        ]
+        entries: [...state.entries, { ...action.candy, objectId: action.payload.objectId }]
       };
     case READ_CANDY_COMMIT:
       return { ...state, entries: [...action.payload.results] };
@@ -29,9 +24,7 @@ const candy = (state = initialState, action) => {
     case UPDATE_CANDY_COMMIT:
       return {
         ...state,
-        entries: state.entries.map(e =>
-          e.objectId === action.id ? { ...e, ...action.candy } : e
-        )
+        entries: state.entries.map(e => (e.objectId === action.id ? { ...e, ...action.candy } : e))
       };
     default:
       return state;

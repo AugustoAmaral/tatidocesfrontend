@@ -3,10 +3,11 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Main from "../components/main/Main";
 
 import Candies from "../components/candies/Candies";
+// import SignIn from "../components/authentication/SignIn";
 
-const PrivateRoute = ({ component, ...props }) => (
+const PrivateRoute = ({ component, title, ...props }) => (
   <Route>
-    <Main>{component}</Main>
+    <Main title={title} component={component}></Main>
   </Route>
 );
 
@@ -14,7 +15,8 @@ const Routes = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <PrivateRoute component={Candies} />
+        <PrivateRoute component={Candies} title="Doces" />
+        {/* <Route component={SignIn} /> */}
       </Switch>
     </BrowserRouter>
   );
