@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../../images/logo.png";
+import Logo from "../../images/logo sem fundo sem borda.png";
 import { Divider, Grid, ListSubheader, List, makeStyles, SwipeableDrawer } from "@material-ui/core";
 import DrawerListItem from "../common/DrawerListItem";
 
@@ -20,7 +20,7 @@ const LeftMenu = ({ open, toggleMenu, list }) => {
   return (
     <SwipeableDrawer open={open} onOpen={toggleMenu} onClose={toggleMenu}>
       <Grid container direction="column" alignItems="center">
-        <img alt="Tizir" src={Logo} style={{marginTop: 16, marginBottom: 32}} height="160px" />
+        <img alt="Tizir" src={Logo} style={{marginTop: 16, marginBottom: 32}} height="120px" />
       </Grid>
       <List className={classes.list}>
         {list.map((item, i) => {
